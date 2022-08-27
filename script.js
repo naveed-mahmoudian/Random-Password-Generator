@@ -12,7 +12,11 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   var numChars = window.prompt("How many characters in the password?");
-
+  var includeLowercase = window.confirm("Include lowercase letters? \nOK = YES \nCANCEL = NO");
+  var includeUppercase = window.confirm("Include uppercase letters? \nOK = YES \nCANCEL = NO");
+  var includeNumbers = window.confirm("Include numbers? \nOK = YES \nCANCEL = NO");
+  var includeSpecialChars = window.confirm("Include special characters? \nOK = YES \nCANCEL = NO");
+ 
   function generatePassword(){
     
   }
