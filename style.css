@@ -14,7 +14,7 @@ body,
 
 body {
   font-family: sans-serif;
-  background-color: #f9fbfd;
+  background-color: #303030;
 }
 
 .wrapper {
@@ -27,15 +27,15 @@ header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  color: #e7e9eb;
 }
 
 .card {
-  background-color: hsl(0, 0%, 100%);
+  background-color: #5c5c5c;
   border-radius: 5px;
   border-width: 1px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: hsl(206, 17%, 28%);
+  box-shadow: rgba(0, 0, 0, 0.15) 4px 2px 4px 0px;
+  color: #e7e9eb;
   font-size: 18px;
   margin: 0 auto;
   max-width: 800px;
@@ -52,6 +52,14 @@ header {
 
 .card-body {
   min-height: 100px;
+}
+
+textarea {
+  background-color: #303030;
+}
+
+textarea::placeholder {
+  color: #e7e9eb;
 }
 
 .card-footer {
@@ -116,6 +124,7 @@ button[disabled] {
   border-radius: 6px;
   resize: none;
   overflow: hidden;
+  color: #e7e9eb;
 }
 
 @media (max-width: 690px) {

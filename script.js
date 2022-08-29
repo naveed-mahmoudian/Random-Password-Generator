@@ -18,7 +18,7 @@ function writePassword() {
 
   function checkUserInput() {
   numChars = window.prompt("How many characters in the password?");
-  
+
     if (numChars < 8) {
       window.alert("Password must be at least 8 characters");
       numChars = null;
@@ -98,6 +98,17 @@ function writePassword() {
             
           generatedPass += randomArr[randomIndex];
         }
+      } else if (lowercase && numbers && specialChars && !uppercase) {
+        for (i=0; i < chars; i++) {
+          var randomIndexLC = Math.floor(Math.random() * allChars.lowercaseChars.length);
+          var randomIndexN = Math.floor(Math.random() * allChars.numbersArr.length);
+          var randomIndexSC = Math.floor(Math.random() * allChars.specialCharsArr.length);
+
+          var randomArr = [allChars.lowercaseChars[randomIndexLC], allChars.numbersArr[randomIndexN], allChars.specialCharsArr[randomIndexSC]];
+          var randomIndex = Math.floor(Math.random() * randomArr.length);
+
+          generatedPass += randomArr[randomIndex];
+        }
       } else if (lowercase && uppercase && numbers && specialChars) {
         for (i=0; i < chars; i++) {
           var randomIndexLC = Math.floor(Math.random() * allChars.lowercaseChars.length);
@@ -166,7 +177,7 @@ function writePassword() {
           var randomIndexSC = Math.floor(Math.random() * allChars.specialCharsArr.length);
           generatedPass += allChars.specialCharsArr[randomIndexSC];
         }
-      } else { generatedPass = "Err: Please correct your inputs and try again" }
+      } else { generatedPass = "Err: Please select at least one password parameter" }
       return generatedPass
     }
 
