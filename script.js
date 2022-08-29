@@ -18,7 +18,7 @@ function writePassword() {
   checkUserInput();
 
   function checkUserInput() {
-  numChars = window.prompt("How many characters in the password?");
+  numChars = (window.prompt("How many characters in the password?"));
 
     if (numChars < 8) {
       window.alert("Password must be at least 8 characters");
@@ -26,6 +26,10 @@ function writePassword() {
       checkUserInput();
     } else if (numChars > 128) {
       window.alert("Password must be less than 128 characters");
+      numChars = null;
+      checkUserInput();
+    } else if (parseInt(numChars.value)) {
+      window.alert("Password length must be an integer");
       numChars = null;
       checkUserInput();
     }
