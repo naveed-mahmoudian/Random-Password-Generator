@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var copyBtn = document.querySelector("#copy");
 
 allChars = {
   lowercaseChars: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
@@ -182,7 +183,25 @@ function writePassword() {
     }
 
     passwordText.value = password;
+    return password
+}
+var passwordToCopy = password;
+
+// Copy password to clipboard
+function copyToClipboard() {
+  if (passwordToCopy.value && passwordToCopy.value != "Err: Please select at least one password parameter") {
+    navigator.clipboard.writeText(passwordToCopy.value).then(() => {
+      // clipboard successful
+      window.alert("Password copied to clipboard!");
+    }, () => {
+      // clipboard unsucessful
+      console.log("password could not be copied")
+    });
+  } else { console.log("no password to copy"); }
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+//Add event listener to copy to clipboard button
+copyBtn.addEventListener("click", copyToClipboard);
