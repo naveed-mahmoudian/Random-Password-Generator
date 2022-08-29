@@ -1,10 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var lowercaseChars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-var uppercaseChars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-var numbersArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-var specialCharsArr = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", ":", ";", "<", "=", ">", "?", "@", "[", "]", "/", "^", "|", "{", "}", "~"]
 
+allChars = {
+  lowercaseChars: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
+  uppercaseChars: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+  numbersArr: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+  specialCharsArr: ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", ":", ";", "<", "=", ">", "?", "@", "[", "]", "/", "^", "|", "{", "}", "~"]
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -21,37 +23,99 @@ function writePassword() {
 
     function generatePassword(chars, lowercase, uppercase, numbers, specialChars){
       var generatedPass = "";
-      var randomIndex;
+      var randomIndexLC;
+      var randomIndexUC;
+      var randomIndexN;
+      var randomIndexSC;
 
-      if (lowercase) {
+      if (lowercase && !uppercase && !numbers && !specialChars) {
           for (i=0; i < chars; i++) {
-            randomIndex = Math.floor(Math.random() * lowercaseChars.length);
-            generatedPass += lowercaseChars[randomIndex];
+            randomIndexLC = Math.floor(Math.random() * allChars.lowercaseChars.length);
+            generatedPass += allChars.lowercaseChars[randomIndexLC];
           }
       } else if (lowercase && uppercase){
-        
+          for (i=0; i < chars; i++) {
+            randomIndexLC = Math.floor(Math.random() * allChars.lowercaseChars.length);
+            randomIndexUC = Math.floor(Math.random() * allChars.uppercaseChars.length);
+
+            var randomArr = [allChars.lowercaseChars[randomIndexLC], allChars.uppercaseChars[randomIndexUC]];
+            var randomIndex = Math.floor(Math.random() * randomArr.length);
+            
+            generatedPass += randomArr[randomIndex];
+          }
       } else if (lowercase && numbers) {
+            for (i=0; i < chars; i++) {
+            randomIndexLC = Math.floor(Math.random() * allChars.lowercaseChars.length);
+            randomIndexN = Math.floor(Math.random() * allChars.numbersArr.length);
 
+            var randomArr = [allChars.lowercaseChars[randomIndexLC], allChars.numbersArr[randomIndexN]];
+            var randomIndex = Math.floor(Math.random() * randomArr.length);
+
+            generatedPass += randomArr[randomIndex];
+          }
       } else if (lowercase && specialChars) {
+        for (i=0; i < chars; i++) {
+          randomIndexLC = Math.floor(Math.random() * allChars.lowercaseChars.length);
+          randomIndexSC = Math.floor(Math.random() * allChars.specialCharsArr.length);
 
+          var randomArr = [allChars.lowercaseChars[randomIndexLC], allChars.specialCharsArr[randomIndexSC]];
+          var randomIndex = Math.floor(Math.random() * randomArr.length);
+          
+          generatedPass += randomArr[randomIndex];
+        }
       } else if (lowercase && uppercase && numbers) {
+
+      } else if (lowercase && uppercase && specialChars) {
 
       } else if (lowercase && uppercase && numbers && specialChars) {
 
-      } else if (uppercase) {
-
+      } else if (uppercase && !lowercase && !numbers && !specialChars) {
+        for (i=0; i < chars; i++) {
+          randomIndexUC = Math.floor(Math.random() * allChars.uppercaseChars.length);
+          generatedPass += allChars.uppercaseChars[randomIndexUC];
+        }
       } else if (uppercase && numbers) {
+        for (i=0; i < chars; i++) {
+          randomIndexUC = Math.floor(Math.random() * allChars.uppercaseChars.length);
+          randomIndexN = Math.floor(Math.random() * allChars.numbersArr.length);
 
+          var randomArr = [allChars.uppercaseChars[randomIndexUC], allChars.numbersArr[randomIndexN]];
+          var randomIndex = Math.floor(Math.random() * randomArr.length);
+          
+          generatedPass += randomArr[randomIndex];
+        }
       } else if (uppercase && specialChars) {
+        for (i=0; i < chars; i++) {
+          randomIndexUC = Math.floor(Math.random() * allChars.uppercaseChars.length);
+          randomIndexSC = Math.floor(Math.random() * allChars.specialCharsArr.length);
 
+          var randomArr = [allChars.uppercaseChars[randomIndexUC], allChars.specialCharsArr[randomIndexSC]];
+          var randomIndex = Math.floor(Math.random() * randomArr.length);
+          
+          generatedPass += randomArr[randomIndex];
+        }
       } else if (uppercase && numbers && specialChars) {
 
-      } else if (numbers) {
-
+      } else if (numbers && !lowercase && !uppercase && !specialChars) {
+        for (i=0; i < chars; i++) {
+          randomIndexN = Math.floor(Math.random() * allChars.numbersArr.length);
+          generatedPass += allChars.numbersArr[randomIndexN];
+        }
       } else if (numbers && specialChars) {
+        for (i=0; i < chars; i++) {
+          randomIndexN = Math.floor(Math.random() * allChars.numbersArr.length);
+          randomIndexSC = Math.floor(Math.random() * allChars.specialCharsArr.length);
 
-      } else if (specialChars) {
-
+          var randomArr = [allChars.numbersArr[randomIndexN], allChars.specialCharsArr[randomIndexSC]];
+          var randomIndex = Math.floor(Math.random() * randomArr.length);
+          
+          generatedPass += randomArr[randomIndex];
+        }
+      } else if (specialChars && !lowercase && !uppercase && !numbers) {
+        for (i=0; i < chars; i++) {
+          randomIndexSC = Math.floor(Math.random() * allChars.specialCharsArr.length);
+          generatedPass += allChars.specialCharsArr[randomIndexSC];
+        }
       } else { generatedPass = "Err: Please select at least one paramaeter" }
       return generatedPass
     }
