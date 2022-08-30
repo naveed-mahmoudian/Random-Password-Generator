@@ -132,6 +132,13 @@ button[disabled] {
   color: #e7e9eb;
 }
 
+footer {
+  text-align: center;
+  color: #e7e9eb;
+  position: relative;
+  bottom: 40px;
+}
+
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
