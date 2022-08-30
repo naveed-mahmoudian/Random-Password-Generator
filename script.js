@@ -15,8 +15,8 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   var numChars;
 
+  // Check user input to verify they entered a number between 8 ans 128
   checkUserInput();
-
   function checkUserInput() {
   numChars = (window.prompt("How many characters in the password?"));
 
@@ -41,8 +41,9 @@ function writePassword() {
     var includeNumbers = window.confirm("Include numbers? \nOK = YES \nCANCEL = NO");
     var includeSpecialChars = window.confirm("Include special characters? \nOK = YES \nCANCEL = NO");
 
-  var password = generatePassword(numChars, includeLowercase, includeUppercase, includeNumbers, includeSpecialChars);
+    var password = generatePassword(numChars, includeLowercase, includeUppercase, includeNumbers, includeSpecialChars);
 
+    // Generates a password based on the confirmations the user provided above
     function generatePassword(chars, lowercase, uppercase, numbers, specialChars){
       var generatedPass = "";
 
