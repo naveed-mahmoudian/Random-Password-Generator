@@ -47,6 +47,7 @@ function writePassword() {
     function generatePassword(chars, lowercase, uppercase, numbers, specialChars){
       var generatedPass = "";
 
+      // Logic to check what password parameters the user selected and randomly generates a passowrd with said parameters
       if (lowercase && !uppercase && !numbers && !specialChars) {
           for (i=0; i < chars; i++) {
             var randomIndexLC = Math.floor(Math.random() * allChars.lowercaseChars.length);
@@ -183,7 +184,7 @@ function writePassword() {
           var randomIndexSC = Math.floor(Math.random() * allChars.specialCharsArr.length);
           generatedPass += allChars.specialCharsArr[randomIndexSC];
         }
-      } else { generatedPass = "Err: Please select at least one password parameter" }
+      } else { generatedPass = "Err: Please select at least one password parameter" } // Returns an error if user declines all password parameters
       return generatedPass
     }
 
